@@ -1,0 +1,69 @@
+linters:
+  enable-all: false
+  enable:
+    - unparam
+    - whitespace
+    - unconvert
+    - bodyclose
+    - gofmt
+    - gocritic
+    - godot
+    - prealloc
+    - rowserrcheck
+    - unconvert
+    - lll
+    - cyclop
+    - gci
+    - gosec
+    - prealloc
+    - revive
+    - gochecknoglobals
+    - funlen
+  disable:
+    - errcheck
+    - ineffassign
+
+linters-settings:
+  dupl:
+    threshold: 100
+  lll:
+    line-length: 140
+  cyclop:
+    max-complexity: 16
+    skip-tests: true
+  funlen:
+    lines: 60
+    statements: 40
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gochecknoglobals
+        - funlen
+        - lll
+        - unparam
+        - govet
+    - path: main.go
+      linters:
+        - funlen
+        - gochecknoglobals
+  exclude-use-default: false
+  exclude:
+    # govet: Common false positives
+    - (possible misuse of unsafe.Pointer|should have signature)
+
+    # gosec: Too many false-positives on 'unsafe' usage
+    - Use of unsafe calls should be audited
+
+    # gosec: Too many false-positives for parametrized shell calls
+    - Subprocess launch(ed with variable|ing should be audited)
+
+    # gosec: Duplicated errcheck checks
+    - G104
+
+    # gosec: Too many issues in popular repos
+    - (Expect directory permissions to be 0750 or less|Expect file permissions to be 0600 or less)
+
+    # gosec: False positive is triggered by 'src, err := ioutil.ReadFile(filename)'
+    - Potential file inclusion via variable

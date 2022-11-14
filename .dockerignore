@@ -1,0 +1,12 @@
+**/.git
+**/.DS_Store
+**/.idea
+
+# GitLab CI
+.gitlab-ci.yml
+
+# Docker
+/docker
+.dockerignore
+
+README.md
