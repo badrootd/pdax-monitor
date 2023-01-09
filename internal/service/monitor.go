@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/go-kit/log"
@@ -135,7 +136,7 @@ func (m *MonitorService) MonitorTrades(ctx context.Context, wsInitBook websocket
 
 	err = tradeConn.Bootstrap(authToken, wsInitBook)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to bootstrap websocket: %v", err)
 	}
 
 	var closed bool
@@ -149,7 +150,7 @@ func (m *MonitorService) MonitorTrades(ctx context.Context, wsInitBook websocket
 
 		closed, data, err = tradeConn.ReadMessage()
 		if err != nil {
-			return err
+			return fmt.Errorf("failed to read message from trade websocket: %v", err)
 		}
 
 		m.handleBinMessage(ctx, data)

@@ -44,31 +44,31 @@ func (ws *PDAXWebsocket) Bootstrap(authToken string, wsInitBook InitBook) error 
 	// read and ignore PDAX.RouteInfoMessage
 	_, _, err = ws.conn.ReadMessage()
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to read PDAX.RouteInfoMessage: %v", err)
 	}
 
 	err = ws.sendAuthMessage(authToken)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to send auth message: %v", err)
 	}
 
 	// mandatory response to PDAX.LoginReplyMessage: PDAX.MessageCallBackInfo
 	messageCallbackInfo, _ := base64.StdEncoding.DecodeString(wsInitBook.MessageCallBackInfo)
 	err = ws.conn.WriteMessage(websocket.BinaryMessage, messageCallbackInfo)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to write PDAX.MessageCallBackInfo: %v", err)
 	}
 
 	m0, _ := base64.StdEncoding.DecodeString(wsInitBook.M0)
 	err = ws.conn.WriteMessage(websocket.BinaryMessage, m0)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to write PDAX M0 message: %v", err)
 	}
 
 	for n := 0; n < 2; n++ {
 		_, _, err = ws.conn.ReadMessage()
 		if err != nil {
-			return err
+			return fmt.Errorf("failed to read PDAX bootstrap 2 messages: %v", err)
 		}
 	}
 

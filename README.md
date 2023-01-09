@@ -16,10 +16,10 @@ It means that if protocol will be changed we will need to adjust service.
 
 ### Requirements
 
-* User in PDAX. Not need to pass KYC, after registration user has access to (trading terminal)[https://trade.pdax.ph].
-* Account in (2Captcha)[https://2captcha.com/]. This service is using for solving captcha during login to PDAX.
+* User in PDAX. Not need to pass KYC, after registration user has access to [trading terminal](https://trade.pdax.ph).
+* Account in [2Captcha](https://2captcha.com/). This service is using for solving captcha during login to PDAX.
 
-For create accounts was used service for generate temporary anonynous emails - (TempMmail)[https://temp-mail.org/].
+For create accounts was used service for generate temporary anonynous emails - [TempMail](https://temp-mail.org/).
 
 ### Deploy
 

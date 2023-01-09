@@ -20,7 +20,7 @@ lint_docker:
 	docker run --rm -v $(GOPATH)/pkg/mod:/go/pkg/mod:ro -v `pwd`:/`pwd`:ro -w /`pwd` golangci/golangci-lint:v1.39.0-alpine golangci-lint run --deadline=5m -v
 
 build:
-	go build --ldflags "-s -w -linkmode external -extldflags -static -X main.version=$(CI_BRANCH)" --tags netcgo -o ./bin/server ./cmd/server/
+	go build -o ./bin/server ./cmd/server/
 	cp -r ./auxiliary ./bin/
 
 build_mac:

@@ -97,6 +97,10 @@ func gracefulMain() exitCode {
 	rollbarIsActive := fs.Bool("rollbar.is_active", false, "Rollbar enabled")
 	v := fs.Bool("v", false, "Show version")
 
+	fmt.Println(pdaxUsername)
+	fmt.Println(pdaxPassword)
+	fmt.Println(captchaSolverKey)
+
 	if err = ff.Parse(
 		fs, os.Args[1:],
 		ff.WithConfigFileFlag("config"),
