@@ -1,29 +1,24 @@
-# PDAX volume monitor
+# PDAX Volume Monitor
 
-[PDAX](https://pdax.ph/) is Cryptocurrency Trading Platform in the Philippines.
+This project focuses on monitoring the trading volume for specific cryptocurrency pairs on the [PDAX](https://pdax.ph/) trading platform in the Philippines.
 
-We need to monitor trading volume for specific [pairs](auxiliary/currencyCodes.json).
+<div style="background-color: #FFF3C2; padding: 10px; border-radius: 5px; border: 1px solid #FFCE00;">
+⚠️ Warning
 
-*Important*
+1. Code is written in fast-and-dirty style.
+2. Be aware that PDAX does not currently offer an official API for this purpose. The `volume-pdax-monitor` service utilizes an unofficial WebSocket API sourced from the [PDAX trading terminal](https://trade.pdax.ph). It's important to note that if the protocol undergoes any changes, the service will require corresponding adjustments to maintain functionality.
+</div>
 
-PDAX is not providing official API and `volume-pdax-monitor` service is using unofficial websocket API from (PDAX trading terminal)[https://trade.pdax.ph].
+## Schema
 
-It means that if protocol will be changed we will need to adjust service.
-
-### Schema
+Below is a visual representation of the project's schema:
 
 ![Schema](schema.png)
 
-### Requirements
+## Prerequisites
 
-* User in PDAX. Not need to pass KYC, after registration user has access to [trading terminal](https://trade.pdax.ph).
-* Account in [2Captcha](https://2captcha.com/). This service is using for solving captcha during login to PDAX.
+Before getting started with this project, there are a few prerequisites you need to fulfill:
 
-For create accounts was used service for generate temporary anonynous emails - [TempMail](https://temp-mail.org/).
+1. **PDAX User Account:** You must have an active account on PDAX. If needed, you can create temporary accounts using services like [TempMail](https://temp-mail.org/). KYC verification is not required for these accounts. Once registered, users gain access to the [PDAX trading terminal](https://trade.pdax.ph).
 
-### Deploy
-
-Currently service in running on EC2 instance in prod account because websocket connection is termitating with 1006 error when service is running in kubernetes.
-
-Ideally we should to migrate service to kubernetes.
-
+2. **2Captcha Account:** Sign up and fund an account on [2Captcha](https://2captcha.com/). This service is utilized to solve Google captchas, which are encountered when obtaining a PDAX session.
