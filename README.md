@@ -2,12 +2,11 @@
 
 This project focuses on monitoring the trading volume for specific cryptocurrency pairs on the [PDAX](https://pdax.ph/) trading platform in the Philippines.
 
-<div style="background-color: #FFF3C2; padding: 10px; border-radius: 5px; border: 1px solid #FFCE00;">
-⚠️ Warning
+> ⚠️ **Warning**
+> 1. Code is written in fast-and-dirty style.
+> 2. Be aware that PDAX does not currently offer an official API for this purpose. The `volume-pdax-monitor` service utilizes an unofficial WebSocket API sourced from the [PDAX trading terminal](https://trade.pdax.ph). It's important to note that if the protocol undergoes any changes, the service will require corresponding adjustments to maintain functionality.
 
-1. Code is written in fast-and-dirty style.
-2. Be aware that PDAX does not currently offer an official API for this purpose. The `volume-pdax-monitor` service utilizes an unofficial WebSocket API sourced from the [PDAX trading terminal](https://trade.pdax.ph). It's important to note that if the protocol undergoes any changes, the service will require corresponding adjustments to maintain functionality.
-</div>
+
 
 ## Schema
 
